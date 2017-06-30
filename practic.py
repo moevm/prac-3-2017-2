@@ -24,6 +24,8 @@ def interpritator(text):
         textobj.moveCursor(10, 0)
         i=0
         for word in range(len(lineWord)):
+            if (textobj.getX() + 6 * len(lineWord[word])) > 550:
+                upClamping -= step
             if upClamping - 2*step < downClamping:
                 MyCanvas.drawText(textobj)
                 MyCanvas.showPage()
@@ -32,7 +34,7 @@ def interpritator(text):
                 textobj.setFont("Time", 12)
                 textobj.setLeading(14)
 
-            if textobj.getX()+6*len(lineWord[word])<=550:
+            if (textobj.getX()+6*len(lineWord[word]))<=550:
                 str = lineWord[word] + " "
                 textobj.textOut(str)
                 border=40
@@ -43,7 +45,6 @@ def interpritator(text):
                 textobj.textLine("")
                 str = lineWord[word] + " "
                 textobj.textOut(str)
-                upClamping -= step
                 border=50
         if i==0:
             textobj.moveCursor(-10, 0)
